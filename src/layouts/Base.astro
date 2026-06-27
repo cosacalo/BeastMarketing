@@ -45,9 +45,6 @@ const ogUrl = new URL(ogImage.src, Astro.site ?? "https://beastmarketing.pro").t
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogUrl} />
-
-    <meta name="geo.region" content="US-FL" />
-    <meta name="geo.placename" content="Sarasota, Bradenton" />
   </head>
   <body>
     <slot />
