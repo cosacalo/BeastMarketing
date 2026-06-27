@@ -1,0 +1,55 @@
+---
+const faqs = [
+  {
+    q: "You are a brand-new company. Why should I trust you?",
+    a: "Fair question. We are early, and we are not going to pretend otherwise. What we offer instead of a long client list is a real guarantee: month-to-month terms, you own all your accounts, and one owner who answers the phone. We are taking on a small number of local businesses and doing excellent work, because our next client comes from the last one.",
+  },
+  {
+    q: "Do I have to sign a long contract?",
+    a: "No. Retainers are month to month. If it is not working, you can walk, and you keep everything we built. No 18-month lock-ins, no early-termination traps.",
+  },
+  {
+    q: "Do I have to buy everything at once?",
+    a: "Not at all. Most owners start with one thing, a logo, a website, a batch of shirts, and add more once they trust the work. You are never pushed to buy the whole list.",
+  },
+  {
+    q: "Can one team really do all of that well?",
+    a: "We are not claiming to be the world expert in every channel. We are claiming something more useful for a local business: one owner who knows your whole story, does the core work, and brings in a trusted specialist when a job calls for it. One voice, no finger-pointing between vendors.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "Projects start around $500. Monthly retainers start around $1,000, and full-service management around $4,000 a month. Where you land depends on what you actually need, which is exactly what the quote is for. You get a straight number, no pressure.",
+  },
+  {
+    q: "Who owns my website, ads, and accounts?",
+    a: "You do. Everything is created in your name, on your logins. If we ever part ways, nothing gets held hostage and nothing gets shut off. That is non-negotiable here.",
+  },
+];
+---
+<section id="faq" class="py-24 lg:py-28 border-t border-bone/10">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-10 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16">
+    <div class="reveal">
+      <h2 class="font-display font-semibold text-bone text-[clamp(2rem,4vw,3rem)] leading-[1.05] tracking-[-0.01em]">
+        The honest answers.
+      </h2>
+      <p class="text-ash text-[1.0625rem] leading-[1.65] mt-5 max-w-[26rem]">
+        The questions owners actually ask before hiring anyone. Still unsure? Call or text 240-241-0423.
+      </p>
+    </div>
+
+    <div class="reveal divide-y divide-bone/10 border-t border-bone/10">
+      {faqs.map((f) => (
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+            <span class="font-display font-medium text-bone text-[1.15rem] leading-snug">{f.q}</span>
+            <svg class="w-5 h-5 shrink-0 text-ash transition-transform duration-300 group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="text-ash text-[15px] leading-[1.7] mt-4 max-w-[42rem]">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+<style>
+  summary::-webkit-details-marker { display: none; }
+</style>

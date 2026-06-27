@@ -1,0 +1,60 @@
+---
+const icons: Record<string, string> = {
+  palette: '<path d="M12 21a9 9 0 1 1 0-18a8 8 0 0 1 8 8c0 2-2 3-4 3h-2a2 2 0 0 0-1 3.7A2 2 0 0 1 12 21z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16.5" cy="10.5" r="1"/>',
+  world: '<circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3c2.5 2.5 2.5 15.5 0 18M12 3c-2.5 2.5-2.5 15.5 0 18"/>',
+  mobile: '<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+  ads: '<path d="m3 11 14-5v12L3 13z"/><path d="M18 8a3 3 0 0 1 0 6"/><path d="M7 13v4a1 1 0 0 0 1 1h1"/>',
+  search: '<circle cx="10" cy="10" r="7"/><path d="m21 21-6-6"/>',
+  chart: '<path d="M4 13h3v7H4zM10.5 8h3v12h-3zM17 4h3v16h-3z"/>',
+  shirt: '<path d="M15 4l6 2v5h-3v8a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-8H3V6l6-2a3 3 0 0 0 6 0z"/>',
+  sparkles: '<path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M18.5 14l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/>',
+};
+
+type S = { name: string; desc: string; icon: string; span: string; feature?: "spectrum" | "rose" };
+const services: S[] = [
+  { name: "Brand identity & design", desc: "Logo, color, type, and the look that makes you recognizable.", icon: "palette", span: "lg:col-span-2" },
+  { name: "Web design & build", desc: "A fast, modern site that looks like a real business, not 2010.", icon: "world", span: "lg:col-span-2" },
+  { name: "Social media", desc: "Posts, content, and a feed that stays consistent without your time.", icon: "mobile", span: "lg:col-span-2" },
+  { name: "Custom apparel & merch", desc: "Branded shirts, hats, and uniforms. Where Beast started, done right.", icon: "shirt", span: "lg:col-span-3", feature: "spectrum" },
+  { name: "AI-powered marketing", desc: "Smart tools that move faster and cost less than a full agency team.", icon: "sparkles", span: "lg:col-span-3", feature: "rose" },
+  { name: "Email marketing", desc: "Campaigns and automations that bring people back to buy again.", icon: "mail", span: "lg:col-span-2" },
+  { name: "Paid ads", desc: "Meta, Google, and TikTok ads aimed at customers near you.", icon: "ads", span: "lg:col-span-2" },
+  { name: "SEO & local search", desc: "Show up when people Google your service in Sarasota and Bradenton.", icon: "search", span: "lg:col-span-2" },
+  { name: "Analytics & reporting", desc: "Plain-English numbers each month so you always know what is working.", icon: "chart", span: "lg:col-span-6" },
+];
+---
+<section id="services" class="py-24 lg:py-28 border-t border-bone/10">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-10">
+    <div class="reveal max-w-[42rem] mb-12">
+      <p class="text-[12px] font-medium uppercase tracking-[0.14em] text-ash mb-4">Everything, under one roof</p>
+      <h2 class="font-display font-semibold text-bone text-[clamp(2rem,4vw,3rem)] leading-[1.05] tracking-[-0.01em]">
+        Your website, your social, your ads, your merch.
+      </h2>
+      <p class="text-ash text-[1.0625rem] leading-[1.65] mt-5">
+        Start with one thing or hand us the whole list. You never have to buy everything at once.
+      </p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+      {services.map((s) => (
+        <article class={`group rounded-[10px] p-7 border transition-colors ${s.span} ${
+          s.feature === "spectrum"
+            ? "border-bone/12 bg-surface"
+            : s.feature === "rose"
+            ? "border-rose/40 bg-rose/[0.07]"
+            : "border-bone/10 bg-surface/50 hover:border-bone/20"
+        }`}>
+          {s.feature === "spectrum" && <div class="spectrum-rule h-1 w-12 rounded-full mb-5"></div>}
+          <div class={`w-11 h-11 rounded-[10px] flex items-center justify-center mb-5 ${
+            s.feature === "rose" ? "bg-rose/15 text-rose" : "bg-bone/[0.06] text-bone"
+          }`}>
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={icons[s.icon]} />
+          </div>
+          <h3 class="font-display font-medium text-bone text-[1.25rem] leading-tight">{s.name}</h3>
+          <p class="text-ash text-[14px] leading-[1.6] mt-2.5 max-w-[34rem]">{s.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

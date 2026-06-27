@@ -1,0 +1,29 @@
+---
+const promises = [
+  { k: "No long contracts", v: "Month to month on retainers. If it is not working, you can walk." },
+  { k: "You own everything", v: "Your accounts, your ad data, your logins. Always in your name." },
+  { k: "One person who answers", v: "You talk to the owner, not a ticket number or a junior hire." },
+];
+---
+<section class="py-24 lg:py-32 border-t border-bone/10 relative overflow-hidden">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-10">
+    <div class="reveal max-w-[58rem] mx-auto text-center">
+      <div class="spectrum-rule h-1 w-16 rounded-full mx-auto mb-9"></div>
+      <p class="text-[12px] font-medium uppercase tracking-[0.14em] text-ash mb-7">The promise</p>
+      <blockquote class="font-display font-medium text-bone text-[clamp(1.65rem,3.4vw,2.6rem)] leading-[1.18] tracking-[-0.01em]">
+        We are new, and we are going to earn it. You will always know who you are talking to, what we
+        are doing, and what it is getting you. <span class="text-rose">That is the whole deal.</span>
+      </blockquote>
+      <p class="text-ash text-[15px] mt-7">Brianna Canaval, founder of Beast Marketing Co</p>
+    </div>
+
+    <div class="reveal grid sm:grid-cols-3 gap-5 mt-16 max-w-[60rem] mx-auto">
+      {promises.map((p) => (
+        <div class="rounded-[10px] border border-bone/10 bg-surface/50 p-6 text-left">
+          <h3 class="font-display font-medium text-bone text-[1.1rem] mb-2">{p.k}</h3>
+          <p class="text-ash text-[14px] leading-[1.6]">{p.v}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

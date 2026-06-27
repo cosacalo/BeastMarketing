@@ -1,0 +1,75 @@
+---
+import "../styles/global.css";
+import favicon32 from "../assets/favicon-32.png";
+import favicon512 from "../assets/favicon-512.png";
+import appleTouch from "../assets/apple-touch-icon.png";
+import ogImage from "../assets/og.png";
+// Preload the two most critical fonts (hero display + body) for faster first paint.
+import clashDisplay600 from "../fonts/clash-600.woff2";
+import generalSans400 from "../fonts/general-400.woff2";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Beast Marketing Co | One team. One voice. Your entire marketing, handled.",
+  description = "A one-stop marketing and custom apparel team in Sarasota and Bradenton, FL. Brand, website, social, email, ads, SEO, and merch, with one person you can actually call.",
+} = Astro.props;
+
+const ogUrl = new URL(ogImage.src, Astro.site ?? "https://beastmarketingco.com").toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preload" href={clashDisplay600} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={generalSans400} as="font" type="font/woff2" crossorigin />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" sizes="32x32" href={favicon32.src} />
+    <link rel="icon" type="image/png" sizes="512x512" href={favicon512.src} />
+    <link rel="apple-touch-icon" href={appleTouch.src} />
+    <meta name="theme-color" content="#0E0C14" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <meta name="geo.region" content="US-FL" />
+    <meta name="geo.placename" content="Sarasota, Bradenton" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const els = document.querySelectorAll(".reveal");
+      if (reduce || !("IntersectionObserver" in window)) {
+        els.forEach((el) => el.classList.add("is-visible"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>

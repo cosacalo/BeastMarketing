@@ -1,0 +1,56 @@
+---
+import lion from "../assets/lion-mark.png";
+---
+<section id="top" class="relative overflow-hidden">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-10 min-h-[100dvh] grid lg:grid-cols-[1.08fr_0.92fr] items-center gap-10 pt-28 pb-16 lg:pt-24">
+    <!-- Left: thesis -->
+    <div class="relative z-10 max-w-[640px]">
+      <p class="hero-in inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.14em] text-ash mb-6" style="animation-delay:.05s">
+        <span class="w-1.5 h-1.5 rounded-full bg-rose"></span>
+        Sarasota and Bradenton, FL
+      </p>
+      <h1 class="hero-in font-display font-semibold text-bone leading-[1.02] tracking-[-0.02em] text-[clamp(2.75rem,6vw,5.25rem)]" style="animation-delay:.12s">
+        Your whole marketing, handled by <span class="text-rose">one team</span>.
+      </h1>
+      <p class="hero-in text-ash text-[1.0625rem] leading-[1.6] mt-6 max-w-[34rem]" style="animation-delay:.22s">
+        No more juggling a logo guy, a web guy, and a freelancer for social. One team, one voice, one number to call.
+      </p>
+      <div class="hero-in flex flex-wrap items-center gap-3 mt-9" style="animation-delay:.32s">
+        <a href="#quote" id="hero-cta"
+           class="font-medium text-[15px] text-obsidian bg-rose px-6 py-3 rounded-[10px] hover:bg-rose-pressed active:scale-[0.98] transition-all">
+          Request a quote
+        </a>
+        <a href="#services"
+           class="font-medium text-[15px] text-bone px-6 py-3 rounded-[10px] border border-bone/20 hover:border-rose hover:bg-rose/10 transition-all">
+          See what we do
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: the spectrum lion (signature) -->
+    <div class="hero-in relative flex items-center justify-center lg:justify-end" style="animation-delay:.18s">
+      <div class="relative w-[clamp(15rem,38vw,26rem)] aspect-square flex items-center justify-center">
+        <div class="lion-halo absolute inset-0 rounded-full blur-3xl opacity-60"
+             style="background: radial-gradient(closest-side, rgba(255,58,94,0.55), rgba(123,63,228,0.35) 55%, rgba(46,125,255,0.18) 75%, transparent 85%);"></div>
+        <img src={lion.src} width="431" height="431" alt="Beast Marketing Co spectrum lion mark"
+             class="lion-drift relative z-10 w-full h-full object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.5)]" fetchpriority="high" />
+      </div>
+    </div>
+  </div>
+  <div class="spectrum-rule h-px w-full max-w-[1280px] mx-auto opacity-40"></div>
+</section>
+
+<style>
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: none; }
+  }
+  .hero-in {
+    opacity: 0;
+    animation: heroRise 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-in { opacity: 1; animation: none; }
+  }
+</style>

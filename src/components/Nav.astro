@@ -1,0 +1,37 @@
+---
+import lion from "../assets/lion-mark.png";
+---
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
+  <nav class="mx-auto max-w-[1280px] px-6 lg:px-10 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 shrink-0" aria-label="Beast Marketing Co, home">
+      <img src={lion.src} width="36" height="36" alt="" class="w-9 h-9" />
+      <span class="font-display font-semibold text-[15px] tracking-[0.01em] text-bone hidden sm:inline">Beast Marketing Co</span>
+    </a>
+    <div class="flex items-center gap-7">
+      <ul class="hidden lg:flex items-center gap-7 text-[15px] text-ash">
+        <li><a href="#services" class="hover:text-bone transition-colors">Services</a></li>
+        <li><a href="#packages" class="hover:text-bone transition-colors">Packages</a></li>
+        <li><a href="#about" class="hover:text-bone transition-colors">About</a></li>
+        <li><a href="#faq" class="hover:text-bone transition-colors">FAQ</a></li>
+      </ul>
+      <a href="#quote"
+         class="font-medium text-[14px] text-obsidian bg-rose px-4 py-2 rounded-[10px] hover:bg-rose-pressed active:scale-[0.98] transition-all">
+        Request a quote
+      </a>
+    </div>
+  </nav>
+</header>
+<script>
+  const nav = document.getElementById("site-nav");
+  const scrolled = ["bg-obsidian/85", "backdrop-blur-md", "border-b", "border-bone/10"];
+  const sentinel = document.createElement("div");
+  sentinel.setAttribute("aria-hidden", "true");
+  sentinel.style.cssText = "position:absolute;top:0;left:0;height:12px;width:1px;pointer-events:none;";
+  document.body.prepend(sentinel);
+  const io = new IntersectionObserver(
+    ([entry]) => nav?.classList.toggle("is-scrolled", !entry.isIntersecting) ||
+      (entry.isIntersecting ? nav?.classList.remove(...scrolled) : nav?.classList.add(...scrolled)),
+    { threshold: 0 }
+  );
+  io.observe(sentinel);
+</script>

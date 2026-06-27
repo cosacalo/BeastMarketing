@@ -1,0 +1,47 @@
+---
+// Modular team structure: a providers[] array so people can be added later with no rebrand.
+const team = [
+  { initials: "BC", name: "Brianna Canaval", role: "Founder and your point of contact", location: "Sarasota / Bradenton, FL" },
+];
+---
+<section id="about" class="py-24 lg:py-28 border-t border-bone/10">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+    <div class="reveal">
+      <p class="text-[12px] font-medium uppercase tracking-[0.14em] text-ash mb-5">Who you work with</p>
+      <h2 class="font-display font-semibold text-bone text-[clamp(2rem,4vw,3rem)] leading-[1.05] tracking-[-0.01em]">
+        A local team that learns your business.
+      </h2>
+      <div class="text-ash text-[1.0625rem] leading-[1.7] mt-6 space-y-4 max-w-[38rem]">
+        <p>
+          Beast started in custom apparel, printing shirts for businesses around Sarasota and Bradenton.
+          One thing kept coming up: owners did not just need shirts, they needed their whole brand to look
+          and sound like one thing.
+        </p>
+        <p>
+          So that is what Beast does now. Brand, website, social, email, ads, SEO, and merch, run by one
+          team that actually knows your name. We are building this the honest way, by doing great work for
+          real local businesses and earning the next client from the last one.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="grid gap-4">
+        {team.map((m) => (
+          <div class="rounded-[10px] border border-bone/10 bg-surface/60 p-7 flex items-center gap-5">
+            <div class="w-16 h-16 rounded-full shrink-0 flex items-center justify-center font-display font-semibold text-[1.35rem] text-obsidian"
+                 style="background: linear-gradient(135deg, #FF3A5E, #FF7A1A 45%, #7B3FE4 80%);">{m.initials}</div>
+            <div>
+              <p class="font-display font-medium text-bone text-[1.15rem]">{m.name}</p>
+              <p class="text-ash text-[14px] mt-0.5">{m.role}</p>
+              <p class="text-ash text-[13px] mt-1">{m.location}</p>
+            </div>
+          </div>
+        ))}
+        <a href="#quote" class="rounded-[10px] border border-dashed border-bone/15 p-5 text-center text-ash text-[14px] hover:border-rose hover:text-bone transition-colors">
+          Growing carefully, one good client at a time.
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

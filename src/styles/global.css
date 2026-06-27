@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ---- Self-hosted fonts (Fontshare WOFF2, Vite-fingerprinted + base-aware) ---- */
+@font-face {
+  font-family: "Clash Display";
+  src: url("../fonts/clash-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("../fonts/clash-500.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("../fonts/clash-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("../fonts/clash-700.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("../fonts/general-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("../fonts/general-500.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+
+/* ---- Design tokens (from design-system.md) ---- */
+@theme {
+  --color-obsidian: #0E0C14;
+  --color-bone: #F4F3F1;
+  --color-rose: #FF3A5E;
+  --color-rose-pressed: #E82B4D;
+  --color-orange: #FF7A1A;
+  --color-violet: #7B3FE4;
+  --color-blue: #2E7DFF;
+  --color-teal: #16C6A4;
+  --color-ash: #8B8794;
+  --color-surface: #16131F;
+
+  --font-display: "Clash Display", sans-serif;
+  --font-body: "General Sans", sans-serif;
+
+  --radius-card: 10px;
+}
+
+/* ---- Base ---- */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-obsidian);
+}
+body {
+  background-color: var(--color-obsidian);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--color-rose); color: var(--color-obsidian); }
+
+h1, h2, h3, .font-display { font-family: var(--font-display); }
+
+:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.spectrum-text {
+  background: linear-gradient(100deg, #FF3A5E 0%, #FF7A1A 28%, #7B3FE4 55%, #2E7DFF 78%, #16C6A4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.spectrum-rule {
+  background: linear-gradient(100deg, #FF3A5E 0%, #FF7A1A 28%, #7B3FE4 55%, #2E7DFF 78%, #16C6A4 100%);
+}
+
+/* ---- Motion: scroll reveal + hero load beat (position-linked, reduced-motion safe) ---- */
+.reveal { opacity: 0; transform: translateY(24px); }
+.reveal.is-visible {
+  opacity: 1; transform: none;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes lionDrift {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(-14deg); }
+}
+@keyframes haloPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.04); }
+}
+.lion-drift { animation: lionDrift 9s ease-in-out infinite; }
+.lion-halo { animation: haloPulse 7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .lion-drift, .lion-halo { animation: none !important; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

@@ -1,0 +1,61 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Privacy | Beast Marketing Co" description="How Beast Marketing Co handles the information you send through the quote form.">
+  <Nav />
+  <main class="mx-auto max-w-[46rem] px-6 lg:px-10 pt-36 pb-24">
+    <h1 class="font-display font-semibold text-bone text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.01em]">Privacy note</h1>
+    <p class="text-ash text-[14px] mt-3">Last updated June 2026</p>
+
+    <div class="text-bone/90 text-[16px] leading-[1.7] mt-10 space-y-6">
+      <p>
+        Beast Marketing Co is a small business in Sarasota and Bradenton, Florida. This note explains, in
+        plain language, what we do with the information you choose to share with us.
+      </p>
+
+      <div>
+        <h2 class="font-display font-medium text-bone text-[1.35rem] mb-3">What we collect</h2>
+        <p class="text-ash">
+          Only what you type into the quote form: your name, business name, email, optional phone number,
+          the services you are interested in, a rough budget, and your message. We do not collect anything
+          you do not hand us.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display font-medium text-bone text-[1.35rem] mb-3">How we use it</h2>
+        <p class="text-ash">
+          We use your details for one thing: to reply to you about your request and, if you become a
+          client, to do the work you hired us for. We do not sell your information, and we do not add you
+          to a marketing list without your okay.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display font-medium text-bone text-[1.35rem] mb-3">Who can see it</h2>
+        <p class="text-ash">
+          Form submissions are delivered to us by email through a form service. Your information stays
+          with Beast Marketing Co and is not shared with anyone else, except where the law requires it.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-display font-medium text-bone text-[1.35rem] mb-3">Your choices</h2>
+        <p class="text-ash">
+          You can ask us to delete the information you sent at any time. Just call or text 240-241-0423 or
+          email <a href="mailto:Beastmarketingco@gmail.com" class="text-bone underline hover:text-rose">Beastmarketingco@gmail.com</a>
+          and we will take care of it.
+        </p>
+      </div>
+    </div>
+
+    <a href={`${base}/`} class="inline-flex items-center gap-2 mt-12 text-rose hover:text-rose-pressed transition-colors text-[15px]">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Back to home
+    </a>
+  </main>
+  <Footer />
+</Base>

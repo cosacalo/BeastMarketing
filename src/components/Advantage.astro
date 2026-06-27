@@ -1,0 +1,51 @@
+---
+import lion from "../assets/lion-mark.png";
+const vendors = ["A logo guy", "A web guy", "A social freelancer", "An email person", "An ads buyer"];
+---
+<section class="py-24 lg:py-28 border-t border-bone/10">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-10">
+    <div class="reveal max-w-[46rem]">
+      <h2 class="font-display font-semibold text-bone text-[clamp(2rem,4vw,3rem)] leading-[1.05] tracking-[-0.01em]">
+        Stop juggling. Start stacking.
+      </h2>
+      <p class="text-ash text-[1.0625rem] leading-[1.65] mt-5 max-w-[40rem]">
+        Most owners end up managing a pile of vendors who do not talk to each other. That is a second
+        job you did not ask for. Beast puts all of it under one roof, run by one local owner who learns
+        your business and answers the phone.
+      </p>
+    </div>
+
+    <div class="reveal mt-14 grid md:grid-cols-[1fr_auto_1fr] items-stretch gap-6 md:gap-4">
+      <!-- Before -->
+      <div class="rounded-[10px] border border-bone/10 bg-surface/60 p-7">
+        <p class="text-[12px] font-medium uppercase tracking-[0.14em] text-ash mb-5">The usual way</p>
+        <ul class="flex flex-wrap gap-2.5">
+          {vendors.map((v) => (
+            <li class="text-[14px] text-ash/90 border border-bone/12 rounded-full px-3.5 py-1.5">{v}</li>
+          ))}
+        </ul>
+        <p class="text-ash text-[14px] leading-[1.6] mt-6">
+          Five vendors. Five invoices. Five people to chase, and nobody owns the whole picture.
+        </p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="flex md:flex-col items-center justify-center text-ash" aria-hidden="true">
+        <svg class="w-7 h-7 rotate-90 md:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+
+      <!-- After -->
+      <div class="rounded-[10px] border-2 border-rose/70 bg-surface p-7 relative">
+        <p class="text-[12px] font-medium uppercase tracking-[0.14em] text-rose mb-5">The Beast way</p>
+        <div class="flex items-center gap-3 mb-4">
+          <img src={lion.src} width="44" height="44" alt="" class="w-11 h-11" />
+          <span class="font-display font-semibold text-bone text-[1.25rem]">One team</span>
+        </div>
+        <p class="text-bone/90 text-[15px] leading-[1.6]">
+          One voice across every channel. One invoice. One point of contact who knows your name and
+          your numbers.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

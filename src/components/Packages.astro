@@ -1,0 +1,69 @@
+---
+type Tier = { name: string; price: string; cadence: string; who: string; points: string[]; featured?: boolean };
+const tiers: Tier[] = [
+  {
+    name: "Project",
+    price: "$500",
+    cadence: "starting, one-time",
+    who: "One thing done right. A logo, a landing page, a batch of shirts, a brand kit.",
+    points: ["A single deliverable, start to finish", "No ongoing commitment", "A clear price before we begin", "Great first step if we are new to each other"],
+  },
+  {
+    name: "Growth",
+    price: "$1,000",
+    cadence: "starting, per month",
+    who: "Ongoing marketing handled for you. Social, email, SEO, and monthly reporting.",
+    points: ["Two or three channels run for you", "Plain-English report every month", "One point of contact who answers", "Cancel anytime, no long contract"],
+    featured: true,
+  },
+  {
+    name: "Full-service",
+    price: "$4,000",
+    cadence: "starting, per month",
+    who: "Your outsourced marketing department. Every channel managed, ads running.",
+    points: ["All channels managed and measured", "Paid ads built and optimized", "Weekly check-ins", "You own every account and all the data"],
+  },
+];
+---
+<section id="packages" class="py-24 lg:py-28 border-t border-bone/10">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-10">
+    <div class="reveal max-w-[42rem] mb-12">
+      <h2 class="font-display font-semibold text-bone text-[clamp(2rem,4vw,3rem)] leading-[1.05] tracking-[-0.01em]">
+        Three ways to work together.
+      </h2>
+      <p class="text-ash text-[1.0625rem] leading-[1.65] mt-5">
+        Real ranges, not mystery pricing. You get a straight number for your business before anything starts.
+      </p>
+    </div>
+
+    <div class="reveal grid lg:grid-cols-3 gap-5 items-start">
+      {tiers.map((t) => (
+        <div class={`rounded-[10px] p-8 flex flex-col h-full ${
+          t.featured ? "border-2 border-rose bg-surface relative" : "border border-bone/10 bg-surface/50"
+        }`}>
+          {t.featured && (
+            <span class="absolute -top-3 left-8 text-[12px] font-medium text-obsidian bg-rose px-3 py-1 rounded-full">Most popular</span>
+          )}
+          <h3 class="font-display font-semibold text-bone text-[1.5rem]">{t.name}</h3>
+          <div class="mt-4 flex items-baseline gap-2">
+            <span class="font-display font-semibold text-bone text-[2.5rem] leading-none">{t.price}</span>
+            <span class="text-ash text-[14px]">{t.cadence}</span>
+          </div>
+          <p class="text-ash text-[14px] leading-[1.6] mt-4 min-h-[3.5rem]">{t.who}</p>
+          <ul class="mt-6 space-y-3 flex-1">
+            {t.points.map((p) => (
+              <li class="flex items-start gap-3 text-[14px] text-bone/90 leading-[1.5]">
+                <svg class="w-4 h-4 mt-0.5 shrink-0 text-rose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+                {p}
+              </li>
+            ))}
+          </ul>
+          <a href="#quote" class={`mt-8 text-center font-medium text-[15px] rounded-[10px] px-5 py-3 transition-all active:scale-[0.98] ${
+            t.featured ? "text-obsidian bg-rose hover:bg-rose-pressed" : "text-bone border border-bone/20 hover:border-rose hover:bg-rose/10"
+          }`}>Request a quote</a>
+        </div>
+      ))}
+    </div>
+    <p class="reveal text-ash text-[13px] mt-6">Rush timelines and one-off add-ons are quoted separately. Ask and we will lay it out plainly.</p>
+  </div>
+</section>
