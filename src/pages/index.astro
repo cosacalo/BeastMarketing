@@ -2,10 +2,6 @@
 import Base from "../layouts/Base.astro";
 import lion from "../assets/lion-mark.png";
 
-const base = import.meta.env.BASE_URL;
-const videoSrc = `${base}lion-intro-v4.mp4`.replace("//", "/");
-const posterSrc = `${base}lion-intro-poster-v4.jpg`.replace("//", "/");
-
 const title = "Beast Marketing | By appointment only";
 const description =
   "A one stop marketing and custom apparel team. Taking new clients by appointment only. Call or text 240-241-0423.";
@@ -14,16 +10,12 @@ const description =
 <Base title={title} description={description}>
   <main class="relative min-h-[100dvh] overflow-hidden flex items-center justify-center">
     <div class="relative z-10 mx-auto w-full max-w-[680px] px-6 py-16 sm:py-20 flex flex-col items-center text-center">
-      <!-- Animated lion: plays once, then settles into the static mark -->
-      <div id="lion-stage" class="lion-stage relative w-[clamp(12rem,44vw,19rem)] aspect-square flex items-center justify-center mb-9 sm:mb-11">
+      <!-- Brand mark: static spectrum lion with halo + slow hue-drift -->
+      <div class="relative w-[clamp(12rem,44vw,19rem)] aspect-square flex items-center justify-center mb-9 sm:mb-11">
         <div class="lion-halo absolute inset-0 rounded-full blur-3xl opacity-60"
              style="background: radial-gradient(closest-side, rgba(255,58,94,0.55), rgba(123,63,228,0.35) 55%, rgba(46,125,255,0.18) 75%, transparent 85%);"></div>
-        <video id="lion-video" class="lion-video absolute inset-0 z-20 w-full h-full object-contain rounded-full"
-               autoplay muted playsinline preload="auto" aria-hidden="true" poster={posterSrc}>
-          <source src={videoSrc} type="video/mp4" />
-        </video>
         <img src={lion.src} width="431" height="431" alt="Beast Marketing spectrum lion mark"
-             class="lion-still lion-drift relative z-10 w-full h-full object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.5)]" fetchpriority="high" />
+             class="lion-drift relative z-10 w-full h-full object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.5)]" fetchpriority="high" />
       </div>
 
       <p class="reveal-up font-display font-semibold text-bone tracking-[0.01em] text-[clamp(1.2rem,3.4vw,1.55rem)] mb-5" style="--d:.10s">
@@ -69,43 +61,7 @@ const description =
     animation: revealUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) forwards;
   }
 
-  /* Intro video on top, static mark beneath; they crossfade once the clip ends. */
-  .lion-video {
-    opacity: 1;
-    transition: opacity 0.9s ease;
-    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 84%, rgba(0, 0, 0, 0) 98%);
-    mask-image: radial-gradient(circle at 50% 50%, #000 84%, rgba(0, 0, 0, 0) 98%);
-  }
-  .lion-still { opacity: 0; transition: opacity 0.9s ease; }
-  .lion-stage.is-done .lion-video { opacity: 0; pointer-events: none; }
-  .lion-stage.is-done .lion-still { opacity: 1; }
-
   @media (prefers-reduced-motion: reduce) {
     .reveal-up { opacity: 1; animation: none; }
-    .lion-video { display: none; }
-    .lion-still { opacity: 1; transition: none; }
   }
 </style>
-
-<script>
-  const stage = document.getElementById("lion-stage");
-  const video = document.getElementById("lion-video") as HTMLVideoElement | null;
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (stage && video && !reduce) {
-    let settled = false;
-    const settle = () => {
-      if (settled) return;
-      settled = true;
-      stage.classList.add("is-done");
-    };
-    video.addEventListener("ended", settle, { once: true });
-    // Fallback: if autoplay is blocked or "ended" never fires, settle on the static mark.
-    const guard = window.setTimeout(settle, 12000);
-    video.addEventListener("ended", () => window.clearTimeout(guard), { once: true });
-    const play = video.play();
-    if (play && typeof play.catch === "function") play.catch(() => settle());
-  } else {
-    stage?.classList.add("is-done");
-  }
-</script>
