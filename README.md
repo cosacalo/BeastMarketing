@@ -1,6 +1,6 @@
-# Beast Marketing Co — website
+# Beast Marketing — website
 
-Marketing site for **Beast Marketing Co**, a one-stop marketing and custom-apparel
+Marketing site for **Beast Marketing**, a one-stop marketing and custom-apparel
 team in Sarasota and Bradenton, FL. Single-page, conversion-focused landing page
 with a quote-request form.
 
