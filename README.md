@@ -12,7 +12,7 @@ quote form posts to a static form service.
 
 ```bash
 npm install
-npm run dev      # http://localhost:4321/BeastMarketing/
+npm run dev      # http://localhost:4321/
 ```
 
 Other scripts: `npm run build` (output to `dist/`), `npm run preview`.
@@ -22,13 +22,12 @@ Other scripts: `npm run build` (output to `dist/`), `npm run preview`.
 Auto-deploys to **GitHub Pages** on every push to `main` via
 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
 
-- Live URL: **https://cosacalo.github.io/BeastMarketing/**
-- One-time setup: repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-
-Because it's a project site (served from `/BeastMarketing/`), `base` is set in
-[`astro.config.mjs`](astro.config.mjs). **To move to a custom domain** (e.g.
-`beastmarketingco.com`): set `site` to the domain, change `base` to `'/'`, add the
-domain under Settings → Pages (a `CNAME` file is created), and point DNS at GitHub.
+- Live URL: **https://beastmarketing.pro**
+- Served at the **root** via the custom domain pinned in [`public/CNAME`](public/CNAME);
+  the apex + `www` DNS point at GitHub Pages. No `base` is set, so dev
+  (`localhost:4321/`) and prod are both at the root.
+- Settings (already configured): Settings → Pages → Source: GitHub Actions, custom
+  domain `beastmarketing.pro`, Enforce HTTPS.
 
 ## Before launch — connect the quote form
 

@@ -1,12 +1,11 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-// Deployed to GitHub Pages as a PROJECT site at https://cosacalo.github.io/BeastMarketing/
-// so `base` must match the repo name. When a custom domain (e.g. beastmarketingco.com)
-// is connected later: set `site` to that domain and change `base` back to '/'.
+// Deployed to GitHub Pages on the custom domain https://beastmarketing.pro, served at
+// the ROOT (no `base` needed). Apex + www DNS point at GitHub Pages and public/CNAME
+// pins the domain. Dev and prod are both at the root: localhost:4321/ and beastmarketing.pro/.
 export default defineConfig({
-  site: 'https://cosacalo.github.io',
-  base: '/BeastMarketing',
+  site: 'https://beastmarketing.pro',
   vite: {
     plugins: [tailwindcss()],
   },
